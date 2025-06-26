@@ -1,13 +1,64 @@
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+<html>
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Santuario Lumínico: El Desafío</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="intro-screen">
+        <h1>Hand Orbs</h1>
+        <p>Controla el orbe con tu mano para recolectar energía y alcanzar la meta.</p>
+        <button id="start-button">Comenzar Experiencia</button>
+        
+        <div id="instructions">
+            <h3>Cómo jugar:</h3>
+            <ul>
+                <li>1. <strong>Mueve tu mano:</strong> Controla el orbe principal moviendo tu mano frente a la cámara.</li>
+                <li>2. <strong>Recolecta orbes:</strong> Atrae los orbes luminosos acercando tu orbe principal. ¡Manténlos cerca para atraparlos!</li>
+                <li>3. <strong>Evita obstáculos:</strong> Ten cuidado con los obstáculos rojos. Si tocas uno con orbes atrapados, ¡los perderás todos!</li>
+                <li>4. <strong>Entrega la energía:</strong> Lleva los orbes atrapados a la meta (el área verde) para entregarlos y avanzar al siguiente nivel.</li>
+            </ul>
+        </div>
+
+        <p id="creator-message">Creado por Jeyson Villalobos</p>
+    </div>
+
+    <div id="hand-detection-screen">
+        <h2>¡Mano no detectada!</h2>
+        <p>Por favor, posiciona tu mano frente a la cámara.</p>
+        <p>Asegúrate de tener buena iluminación.</p>
+        <p>El juego comenzará automáticamente cuando tu mano sea detectada.</p>
+    </div>
+
+    <div id="main-canvas" style="display: none;">
+        <video id="input_video" playsinline></video>
+        <div id="main-orb"></div> <div id="goal-area">
+            <span class="goal-text" id="goal-text">META</span>
+            <span class="goal-count" id="goal-delivered-count">0 / 0</span>
+            <span class="goal-level" id="goal-level">Nivel: 1</span>
+        </div> <div id="info-overlay">
+            <p id="hand-status">Buscando mano...</p>
+        </div>
+        <div id="score-display">Orbes Atrapados: 0</div>
+        <div id="delivered-score-display">Orbes Entregados: 0 / 0</div> <div id="win-message">
+            <span>¡HAS GANADO!</span>
+            <span id="creator-win-message">Creado por Jeyson Villalobos</span>
+        </div>
+        <div id="level-up-message">¡NIVEL SIGUIENTE!</div>
+        <div id="current-level-message">¡NIVEL 1!</div> 
+        <div id="countdown-message"></div> </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+    <script src="./main.js"></script>
+</body>
 </html>
